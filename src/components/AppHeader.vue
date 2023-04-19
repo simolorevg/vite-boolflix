@@ -2,7 +2,7 @@
 import { store } from '../store';
 export default {
     name: 'AppHeader',
-    emits: ['searchFilter'],
+    emits: ['search'],
     data() {
         return {
             store
@@ -16,7 +16,7 @@ export default {
         <div class="search-container">
             <label for="userSearch">Cerca un film/serietv</label>
             <input type="text" id="userSearch" v-model="store.userInput">
-            <button class="btn btn-warning" @click="$emit('searchFilter')">Cerca</button>
+            <button class="btn btn-warning" @click="$emit('search')">Cerca</button>
         </div>
     </div>
 </template>

@@ -15,9 +15,7 @@ export default {
   },
   methods: {
     filterThings() {
-      const params = {
-        api_key: this.store.mykey
-      }
+      const params = {};
       if (this.store.userInput) {
         params.query = this.store.userInput;
       }
@@ -37,11 +35,11 @@ export default {
 </script>
 
 <template>
-  <AppHeader @searchFilter="handleFilter" />
+  <AppHeader @search="handleFilter" />
   <h2>Films</h2>
   <div class="row row-cols-3 g-4">
     <div class="col" v-for="(movie, index) in store.moviesSelected" :key="index">
-      <AppCard />
+      <AppCard :title="movie.original_title" />
     </div>
   </div>
 </template>

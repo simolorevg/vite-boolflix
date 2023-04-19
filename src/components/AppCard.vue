@@ -10,5 +10,6 @@ export default {
 <template>
     <div class="text-center d-flex flex-column">
         <img :src="image" alt="imagefilm">
+        <p>{{ title }}</p>
     </div>
 </template>
