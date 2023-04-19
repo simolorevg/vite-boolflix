@@ -1,0 +1,14 @@
+<script>
+export default {
+    name: 'AppCard',
+    props: {
+        image: String,
+        title: String,
+    }
+}
+</script>
+<template>
+    <div class="text-center d-flex flex-column">
+        <img :src="image" alt="imagefilm">
+    </div>
+</template>
