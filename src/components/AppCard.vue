@@ -17,7 +17,10 @@ export default {
         <div class="my-text-image">
             <h3>{{ realTitle }}</h3>
             <h4>{{ title }}</h4>
-            <p>{{ language }}</p>
+            <div class="lang-section">
+                <p :class="language"></p>
+                <p>{{ language }}</p>
+            </div>
             <h5>{{ vote }}</h5>
         </div>
     </div>
@@ -34,5 +37,9 @@ export default {
 .my-text-image {
     flex-grow: 1;
     width: 100%;
+}
+
+.it {
+    background-image: url('../assets/img/icons8-italy-48.png');
 }
 </style>
