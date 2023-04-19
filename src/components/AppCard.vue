@@ -5,7 +5,8 @@ export default {
         title: String,
         language: String,
         realTitle: String,
-        vote: String
+        vote: String,
+        image: String
     }
 }
 </script>
@@ -18,7 +19,6 @@ export default {
             <h3>{{ realTitle }}</h3>
             <h4>{{ title }}</h4>
             <div class="lang-section">
-                <p :class="language"></p>
                 <p>{{ language }}</p>
             </div>
             <h5>{{ vote }}</h5>
