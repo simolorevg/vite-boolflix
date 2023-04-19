@@ -13,3 +13,6 @@ export default {
         <p>{{ title }}</p>
     </div>
 </template>
+<style lang="scss" scoped>
+@use '../style/general.scss' as *;
+</style>

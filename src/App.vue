@@ -15,7 +15,9 @@ export default {
   },
   methods: {
     filterThings() {
-      const params = {};
+      const params = {
+        api_key: this.store.mykey
+      };
       if (this.store.userInput) {
         params.query = this.store.userInput;
       }
