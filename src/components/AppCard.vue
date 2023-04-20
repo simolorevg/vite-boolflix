@@ -5,15 +5,30 @@ export default {
         title: String,
         language: String,
         realTitle: String,
-        vote: String,
+        vote: Number,
         image: String
+    },
+    data() {
+        return {
+            myVote: this.vote,
+            noVote: null,
+        }
+    },
+    methods: {
+        starsVote(number) {
+            let voteNum = number / 2;
+            voteNum = Math.ceil(voteNum);
+            console.log(voteNum);
+            this.noVote = 5 - voteNum;
+            return voteNum;
+        }
     }
 }
 </script>
 <template>
     <div class="text-center d-flex flex-column">
         <div class="my-card-image">
-            Image section
+            <img :src="image" alt="">
         </div>
         <div class="my-text-image">
             <h3>{{ realTitle }}</h3>
@@ -21,7 +36,9 @@ export default {
             <div class="lang-section">
                 <p>{{ language }}</p>
             </div>
-            <h5>{{ vote }}</h5>
+            <div class="stars-vote">
+                <span v-for="num in starsVote(vote)" :index="num">S</span>
+            </div>
         </div>
     </div>
 </template>
