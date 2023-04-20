@@ -46,14 +46,14 @@ export default {
     <div v-if="this.store.userInput" class="row row-cols-3 g-4">
       <div class="col" v-for="(movie, index) in store.moviesSelected" :key="index">
         <AppCard :title="movie.title" :language="movie.original_language" :realTitle="movie.original_title"
-          :vote="movie.vote_average" />
+          :vote="movie.vote_average" :image="movie.poster_path" />
       </div>
     </div>
     <h2 v-if="this.store.userInput">Serie TV</h2>
     <div v-if="this.store.userInput" class="row row-cols-3 g-4">
       <div class="col" v-for="(fiction, index) in store.tvSelected" :key="index">
         <AppCard :title="fiction.name" :language="fiction.original_language" :realTitle="fiction.original_name"
-          :vote="fiction.vote_average" />
+          :vote="fiction.vote_average" :image="fiction.poster_path" />
       </div>
     </div>
   </div>

@@ -10,8 +10,7 @@ export default {
     },
     data() {
         return {
-            myVote: this.vote,
-            noVote: null,
+            noVote: null
         }
     },
     methods: {
@@ -28,7 +27,7 @@ export default {
 <template>
     <div class="text-center d-flex flex-column">
         <div class="my-card-image">
-            <img :src="image" alt="">
+            <img :src="'https://image.tmdb.org/t/p/w342' + image" alt="">
         </div>
         <div class="my-text-image">
             <h3>{{ realTitle }}</h3>
@@ -36,8 +35,9 @@ export default {
             <div class="lang-section">
                 <p>{{ language }}</p>
             </div>
-            <div class="stars-vote">
-                <span v-for="num in starsVote(vote)" :index="num">S</span>
+            <div class="d-flex justify-content-center align-items-center">
+                <span v-for="num in starsVote(vote)" :index="num">&star;</span>
+                <span v-for="num in noVote" :index="num">&cross;</span>
             </div>
         </div>
     </div>
