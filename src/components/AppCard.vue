@@ -32,7 +32,8 @@ export default {
         <div class="my-text-image">
             <h3>{{ realTitle }}</h3>
             <h4>{{ title }}</h4>
-            <div class="lang-section">
+            <div class="lang-section d-flex justify-content-center align-items-center">
+                <img :src="'src/assets/img/' + language + '.png'" alt="">
                 <p>{{ language }}</p>
             </div>
             <div class="d-flex justify-content-center align-items-center">
@@ -54,9 +55,13 @@ export default {
 .my-text-image {
     flex-grow: 1;
     width: 100%;
-}
 
-.it {
-    background-image: url('../assets/img/icons8-italy-48.png');
+    .lang-section {
+        vertical-align: middle;
+
+        img {
+            width: 20px;
+        }
+    }
 }
 </style>
