@@ -25,16 +25,16 @@ export default {
 }
 </script>
 <template>
-    <div class="text-center d-flex flex-column">
+    <div class="text-center d-flex flex-column my-card">
         <div class="my-card-image">
             <img :src="'https://image.tmdb.org/t/p/w342' + image" alt="">
         </div>
-        <div class="my-text-image">
+        <div class="my-text-image d-flex flex-column justify-content-center align-items-center">
             <h3>{{ realTitle }}</h3>
             <h4>{{ title }}</h4>
-            <div class="lang-section d-flex justify-content-center align-items-center">
-                <img :src="'src/assets/img/' + language + '.png'" alt="">
-                <p>{{ language }}</p>
+            <div class="lang-section d-flex flex-column justify-content-center align-items-center">
+                <p>Language:</p>
+                <img :src="'src/assets/img/' + language + '.png'" :alt="language">
             </div>
             <div class="d-flex justify-content-center align-items-center">
                 <span v-for="num in starsVote(vote)" :index="num">&star;</span>
@@ -46,15 +46,26 @@ export default {
 <style lang="scss" scoped>
 @use '../style/general.scss' as *;
 
+.my-card {
+    position: relative;
+    cursor: pointer;
+}
+
 .my-card-image {
     width: 100%;
-    height: 60%;
-    background-color: orange;
+    height: 100%;
+    position: relative;
 }
 
 .my-text-image {
     flex-grow: 1;
     width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    display: none;
 
     .lang-section {
         vertical-align: middle;
@@ -63,5 +74,9 @@ export default {
             width: 20px;
         }
     }
+}
+
+.my-text-image:hover {
+    display: block;
 }
 </style>
