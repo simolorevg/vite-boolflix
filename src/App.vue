@@ -10,7 +10,8 @@ export default {
   },
   data() {
     return {
-      store
+      store,
+      searchGo: false
     }
   },
   methods: {
@@ -28,11 +29,18 @@ export default {
       axios.get(this.store.urlTv, { params }).then((resp) => {
         this.store.tvSelected = resp.data.results;
       })
-      console.log(this.store.userInput);
 
     },
     handleFilter() {
       this.filterThings();
+      this.searchGo = true;
+    },
+    lenghtArray(thing) {
+      if (thing.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 }
@@ -41,16 +49,16 @@ export default {
 <template>
   <AppHeader @search="handleFilter" />
   <div class="my-container">
-    <h2 v-if="this.store.userInput">Films</h2>
-    <h2 v-else>Cerca un film/serieTv</h2>
-    <div v-if="this.store.userInput" class="row row-cols-3 g-4">
+    <h2 v-if="(!this.searchGo)">Cerca un film o serie tv</h2>
+    <h2 v-if="this.searchGo && lenghtArray(this.store.moviesSelected)" class="my-4">Films</h2>
+    <div v-if="this.searchGo && lenghtArray(this.store.moviesSelected)" class="row row-cols-3 g-4 my-row">
       <div class="col" v-for="(movie, index) in store.moviesSelected" :key="index">
         <AppCard :title="movie.title" :language="movie.original_language" :realTitle="movie.original_title"
           :vote="movie.vote_average" :image="movie.poster_path" />
       </div>
     </div>
-    <h2 v-if="this.store.userInput">Serie TV</h2>
-    <div v-if="this.store.userInput" class="row row-cols-3 g-4">
+    <h2 v-if="this.searchGo && lenghtArray(this.store.tvSelected)" class="my-4">Serie TV</h2>
+    <div v-if="this.searchGo && lenghtArray(this.store.tvSelected)" class="row row-cols-3 g-4 my-row">
       <div class="col" v-for="(fiction, index) in store.tvSelected" :key="index">
         <AppCard :title="fiction.name" :language="fiction.original_language" :realTitle="fiction.original_name"
           :vote="fiction.vote_average" :image="fiction.poster_path" />
@@ -65,5 +73,10 @@ export default {
 .my-container {
   width: 80%;
   margin: 0 auto;
+}
+
+.my-row {
+  background-color: grey;
+  padding: 10px;
 }
 </style>

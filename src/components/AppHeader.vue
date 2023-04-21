@@ -11,12 +11,12 @@ export default {
 }
 </script>
 <template>
-    <div class="container d-flex justify-content-between align-items-center">
-        <h1>Boolflix</h1>
-        <div class="search-container">
-            <label for="userSearch">Cerca un film/serietv</label>
-            <input type="text" id="userSearch" v-model="store.userInput">
-            <button class="btn btn-warning" @click="$emit('search')">Cerca</button>
+    <div class="container d-flex justify-content-between justify-content-end align-items-center">
+        <img src="../assets/img/logo.png" alt="LogoFlix">
+        <div class="search-container d-flex align-items-center">
+            <label for="userSearch" class="d-none">Cerca un film/serietv</label>
+            <input type="text" id="userSearch" v-model="store.userInput" placeholder="Cerca Film / Serie TV">
+            <button class="btn btn-danger" @click="$emit('search')">Cerca</button>
         </div>
     </div>
 </template>

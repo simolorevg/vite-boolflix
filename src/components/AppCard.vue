@@ -26,10 +26,8 @@ export default {
 </script>
 <template>
     <div class="text-center d-flex flex-column my-card">
-        <div class="my-card-image">
-            <img :src="'https://image.tmdb.org/t/p/w342' + image" alt="">
-        </div>
-        <div class="my-text-image d-flex flex-column justify-content-center align-items-center">
+        <img :src="'https://image.tmdb.org/t/p/w342' + image" alt="">
+        <div class="my-text-image">
             <h3>{{ realTitle }}</h3>
             <h4>{{ title }}</h4>
             <div class="lang-section d-flex flex-column justify-content-center align-items-center">
@@ -37,8 +35,8 @@ export default {
                 <img :src="'src/assets/img/' + language + '.png'" :alt="language">
             </div>
             <div class="d-flex justify-content-center align-items-center">
-                <span v-for="num in starsVote(vote)" :index="num">&star;</span>
-                <span v-for="num in noVote" :index="num">&cross;</span>
+                <span v-for="num in starsVote(vote)" :index="num"><i class="fa-solid fa-star"></i></span>
+                <span v-for="num in noVote" :index="num"><i class="fa-regular fa-star"></i></span>
             </div>
         </div>
     </div>
@@ -48,13 +46,12 @@ export default {
 
 .my-card {
     position: relative;
-    cursor: pointer;
+    border: 1px solid white;
 }
 
-.my-card-image {
+img {
     width: 100%;
     height: 100%;
-    position: relative;
 }
 
 .my-text-image {
@@ -66,6 +63,13 @@ export default {
     color: white;
     background-color: rgba($color: #000000, $alpha: 0.8);
     display: none;
+    z-index: 999;
+    padding: 10px;
+    font-size: 0.9em;
+
+    :hover>& {
+        display: block;
+    }
 
     .lang-section {
         vertical-align: middle;
@@ -74,9 +78,5 @@ export default {
             width: 20px;
         }
     }
-}
-
-.my-text-image:hover {
-    display: block;
 }
 </style>
