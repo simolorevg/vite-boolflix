@@ -3,10 +3,12 @@ import { store } from './store';
 import axios from 'axios';
 import AppCard from './components/AppCard.vue';
 import AppHeader from './components/AppHeader.vue';
+import AppSlider from './components/AppSlider.vue';
 export default {
   components: {
     AppHeader,
-    AppCard
+    AppCard,
+    AppSlider
   },
   data() {
     return {
@@ -49,19 +51,21 @@ export default {
 <template>
   <AppHeader @search="handleFilter" />
   <div class="my-container">
-    <h2 v-if="(!this.searchGo)">Cerca un film o serie tv</h2>
+    <div v-if="(!this.searchGo)">
+      <AppSlider />
+    </div>
     <h2 v-if="this.searchGo && lenghtArray(this.store.moviesSelected)" class="my-4">Films</h2>
     <div v-if="this.searchGo && lenghtArray(this.store.moviesSelected)" class="row row-cols-3 g-4 my-row">
       <div class="col" v-for="(movie, index) in store.moviesSelected" :key="index">
         <AppCard :title="movie.title" :language="movie.original_language" :realTitle="movie.original_title"
-          :vote="movie.vote_average" :image="movie.poster_path" />
+          :vote="movie.vote_average" :image="movie.poster_path" :overview="movie.overview" />
       </div>
     </div>
     <h2 v-if="this.searchGo && lenghtArray(this.store.tvSelected)" class="my-4">Serie TV</h2>
     <div v-if="this.searchGo && lenghtArray(this.store.tvSelected)" class="row row-cols-3 g-4 my-row">
       <div class="col" v-for="(fiction, index) in store.tvSelected" :key="index">
         <AppCard :title="fiction.name" :language="fiction.original_language" :realTitle="fiction.original_name"
-          :vote="fiction.vote_average" :image="fiction.poster_path" />
+          :vote="fiction.vote_average" :image="fiction.poster_path" :overview="fiction.overview" />
       </div>
     </div>
   </div>

@@ -6,7 +6,8 @@ export default {
         language: String,
         realTitle: String,
         vote: Number,
-        image: String
+        image: String,
+        overview: String
     },
     data() {
         return {
@@ -34,10 +35,12 @@ export default {
                 <p>Language:</p>
                 <img :src="'src/assets/img/' + language + '.png'" :alt="language">
             </div>
-            <div class="d-flex justify-content-center align-items-center">
-                <span v-for="num in starsVote(vote)" :index="num"><i class="fa-solid fa-star"></i></span>
-                <span v-for="num in noVote" :index="num"><i class="fa-regular fa-star"></i></span>
+            <div class="d-flex justify-content-center align-items-center stars">
+                <span v-for="num in starsVote(vote)" :index="num" class="text-warning">&star;</span>
+                <span v-for="num in noVote" :index="num">&star;</span>
             </div>
+            <h3>Overview:</h3>
+            <p>{{ overview }}</p>
         </div>
     </div>
 </template>
@@ -52,6 +55,10 @@ export default {
 img {
     width: 100%;
     height: 100%;
+}
+
+.stars {
+    font-size: 2em;
 }
 
 .my-text-image {
